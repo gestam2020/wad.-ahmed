@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>📖 قصص عن الحياة</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      direction: rtl;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .book {
+      width: 80%;
+      max-width: 700px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .story-title {
+      color: #4a148c;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .story-content {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a1b9a;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book" id="book">
+    <div class="story-title" id="title">قصة 1: الصبر مفتاح الفرج</div>
+    <div class="story-content" id="content">
+      كان يا ما كان، في قديم الزمان، رجل فقير يعاني من ضيق الحال. لكنه لم يفقد الأمل، وكان صبورًا ومجتهدًا. وبعد سنوات من العمل والتعب، فتح الله له أبواب الرزق.
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevStory()" id="prevBtn">⬅ السابق</button>
+    <button onclick="nextStory()" id="nextBtn">التالي ➡</button>
+  </div>
+
+  <script>
+    const stories = [
+      {
+        title: "قصة 1: الصبر مفتاح الفرج",
+        content: "كان يا ما كان، في قديم الزمان، رجل فقير يعاني من ضيق الحال. لكنه لم يفقد الأمل، وكان صبورًا ومجتهدًا. وبعد سنوات من العمل والتعب، فتح الله له أبواب الرزق."
+      },
+      {
+        title: "قصة 2: لا تحكم على الناس من مظهرهم",
+        content: "دخل رجل بسيط إلى مطعم فخم، فاستغرب الناس من منظره. لكنه جلس بهدوء وأخرج كتابًا وبدأ يقرأ. وعندما اقترب النادل، عرف أنه أستاذ جامعي معروف. المظهر لا يعبّر عن الجوهر."
+      },
+      {
+        title: "قصة 3: أثر الكلمة الطيبة",
+        content: "في أحد الأيام، قالت معلمة لطالب: 'أنت ذكي ولديك مستقبل مشرق'. هذه الكلمة غيرت حياته، وأصبح فيما بعد طبيبًا ناجحًا، يذكر دائمًا تلك الجملة التي منحته الثقة."
+      },
+      {
+        title: "قصة 4: العطاء لا يُشترط أن يكون مالاً",
+        content: "رأى فتى عجوزًا يعاني من حمل حقيبة، فساعده دون تردد. شكره العجوز بحرارة، وقال له: 'أنت لم تساعدني فقط، بل أعطيتني أملًا في الإنسانية'."
+      }
+    ];
+
+    let current = 0;
+
+    function showStory(index) {
+      document.getElementById('title').innerText = stories[index].title;
+      document.getElementById('content').innerText = stories[index].content;
+
+      document.getElementById('prevBtn').disabled = index === 0;
+      document.getElementById('nextBtn').disabled = index === stories.length - 1;
+    }
+
+    function nextStory() {
+      if (current < stories.length - 1) {
+        current++;
+        showStory(current);
+      }
+    }
+
+    function prevStory() {
+      if (current > 0) {
+        current--;
+        showStory(current);
+      }
+    }
+  </script>
+
+</body>
+</html>
